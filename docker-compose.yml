@@ -1,0 +1,19 @@
+
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    # デバッグ中は volumes を活用してホットリロード
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
